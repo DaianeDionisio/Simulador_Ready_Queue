@@ -29,11 +29,8 @@ while (1):
         if(decisionProcess == "2"):
             processMenu = False
 
-    print("Escolha o algoritmo desejado:")
-    print("1 - Priority Scheduling - Não Preemptivo")
-    print("2 - Round Robin (Preemptivo)")
-    decisioAlgorithm = input()
-    newAlgorithm = Algoritmo(decisioAlgorithm, processos)
-
-
-
+        print("Escolha o algoritmo desejado:")
+        print("1 - Priority Scheduling - Não Preemptivo")
+        print("2 - Round Robin (Preemptivo)")
+        decisioAlgorithm = input()
+        newAlgorithm = Algoritmo(decisioAlgorithm, processos)
