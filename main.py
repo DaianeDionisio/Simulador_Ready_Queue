@@ -3,8 +3,7 @@ from Algoritmo import Algoritmo
 
 processos: list[Processo] = []
 
-menu = True
-while (menu):
+while (1):
     processos.clear()
     print("--------------Simulador de fila de prontos--------------")
     print("Adicione os processos:")
@@ -17,12 +16,12 @@ while (menu):
         arrivalTime = input()
         print("Burst Time:")
         burstTime = input()
-        print("Priority:")
+        print("Priority: (Caso não se aplique ao algoritmo desejado, defina a prioridade como 0)")
         priority = input()
         newProcess = Processo(process,arrivalTime,burstTime,priority)
         processos.append(newProcess)
 
-        print("Deseja adicionar mais processos?:")
+        print("Deseja adicionar mais processos?")
         print("1 - sim")
         print("2 - não")
         decisionProcess = input()
