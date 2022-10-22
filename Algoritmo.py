@@ -101,6 +101,3 @@ class Algoritmo(object):
         averageTime = somaTEPX/len(process)
 
         print("Tempo médio de espera: ", averageTime, "ms")
-
-
-
