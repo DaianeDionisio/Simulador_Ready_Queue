@@ -31,8 +31,8 @@ while (menu):
             processMenu = False
 
     print("Escolha o algoritmo desejado:")
-    print("1 - Priority Scheduling")
-    print("2 - Round Robin")
+    print("1 - Priority Scheduling - Não Preemptivo")
+    print("2 - Round Robin (Preemptivo")
     decisioAlgorithm = input()
     newAlgorithm = Algoritmo(decisioAlgorithm, processos)
 
