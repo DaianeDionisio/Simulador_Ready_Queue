@@ -1,4 +1,5 @@
 from Processo import Processo
+from Algoritmo import Algoritmo
 
 processos: list[Processo] = []
 
@@ -20,15 +21,20 @@ while (menu):
         priority = input()
         newProcess = Processo(process,arrivalTime,burstTime,priority)
         processos.append(newProcess)
+
         print("Deseja adicionar mais processos?:")
         print("1 - sim")
         print("2 - não")
-        resposta = input()
+        decisionProcess = input()
 
-        if(resposta == "2"):
+        if(decisionProcess == "2"):
             processMenu = False
 
     print("Escolha o algoritmo desejado:")
     print("1 - Priority Scheduling")
     print("2 - Round Robin")
+    decisioAlgorithm = input()
+    newAlgorithm = Algoritmo(decisioAlgorithm, processos)
+
+
 
