@@ -22,7 +22,7 @@ class Algoritmo(object):
         numProcess = len(self.process)
 
         while(numProcess):
-            priority = 100
+            priority = 1000
 
             for i in self.process:
                 if(i.arrivalTime <= time and i.priority < priority and i.bursTime > 0):

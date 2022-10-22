@@ -4,5 +4,7 @@ class Processo(object):
         self.arrivalTime = int(arrivalTime)
         self.bursTime = int(burstTime)
         self.priority = int(priority)
+        # última execução, para cálculo do tempo de espera do processo
         self.lastRun = 0
+        # o quanto foi executado antes da última execução, para cálculo do tempo de espera do processo
         self.runBefore = 0

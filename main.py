@@ -32,5 +32,5 @@ while (1):
         print("Escolha o algoritmo desejado:")
         print("1 - Priority Scheduling - Não Preemptivo")
         print("2 - Round Robin (Preemptivo)")
-        decisioAlgorithm = input()
-        newAlgorithm = Algoritmo(decisioAlgorithm, processos)
+        decisionAlgorithm = input()
+        newAlgorithm = Algoritmo(decisionAlgorithm, processos)
