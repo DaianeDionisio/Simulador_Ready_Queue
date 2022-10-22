@@ -20,27 +20,31 @@ class Algoritmo(object):
         processMorePriority = Processo
         oldProcessMorePriority = Processo
         indiceProcessMorePriority = 0
+        numProcessos = len(self.process)
 
-        while(len(self.process)):
+        while(numProcessos):
             priority = 100
 
             for i in self.process:
-                if(int(i.arrivalTime) <= arrivalTime and int(i.priority) < priority):
+                if(i.arrivalTime <= arrivalTime and i.priority < priority and i.bursTime > 0):
                     processMorePriority = i
                     indiceProcessMorePriority = process.index(i)
-                    priority = int(i.priority)
+                    priority = i.priority
 
             if(processMorePriority != oldProcessMorePriority):
                 print(arrivalTime, " - Processo em Execução: ", processMorePriority.process)
-                arrivalTime = arrivalTime + int(processMorePriority.bursTime)
+                process[indiceProcessMorePriority].lastRun = arrivalTime
+                arrivalTime = arrivalTime + processMorePriority.bursTime
                 oldProcessMorePriority = processMorePriority
-                self.process.pop(indiceProcessMorePriority)
+                process[indiceProcessMorePriority].bursTime = 0
+                numProcessos = numProcessos-1
 
             else:
                 print(arrivalTime, " - Sem processo dispovível para execução no momento")
                 arrivalTime = arrivalTime+1
 
         print(arrivalTime, "- Fim da execução dos processos")
+        self.calculateAverageTime(process)
 
     def roundRobin(self, process):
         self.process: list[Processo] = []
@@ -55,24 +59,27 @@ class Algoritmo(object):
         while (numProcessos):
             numProcessosArrivalTime = numProcessos
             for i in self.process:
-                if(int(i.arrivalTime) <= arrivalTime):
-                    if(int(i.bursTime) > 0):
+                if(i.arrivalTime <= arrivalTime):
+                    if(i.bursTime > 0):
                         print(arrivalTime, " - Processo em Execução: ", i.process)
+                        i.lastRun = arrivalTime
 
                         if(numProcessos == 1):
-                            arrivalTime = arrivalTime + int(i.bursTime)
+                            arrivalTime = arrivalTime + i.bursTime
                             i.bursTime = 0
                             numProcessos = numProcessos-1
 
                         else:
-                            if(int(i.bursTime)>= quantum):
+                            if(i.bursTime >= quantum):
                                 arrivalTime = arrivalTime + quantum
-                                i.bursTime = int(i.bursTime) - quantum
+                                i.bursTime = i.bursTime - quantum
                                 if(i.bursTime == 0):
                                     numProcessos = numProcessos-1
+                                else:
+                                    i.runBefore = i.runBefore + quantum
 
                             else:
-                                arrivalTime = arrivalTime + int(i.bursTime)
+                                arrivalTime = arrivalTime + i.bursTime
                                 i.bursTime = 0
                                 numProcessos = numProcessos-1
 
@@ -84,3 +91,17 @@ class Algoritmo(object):
                 arrivalTime = arrivalTime + 1
 
         print(arrivalTime, "- Fim da execução dos processos")
+        self.calculateAverageTime(process)
+
+    def calculateAverageTime(self, process):
+        somaTEPX = 0
+
+        for i in process:
+            somaTEPX = somaTEPX + (i.lastRun - i.runBefore - i.arrivalTime)
+
+        averageTime = somaTEPX/len(process)
+
+        print("Tempo médio de espera: ", averageTime, "ms")
+
+
+
