@@ -37,6 +37,7 @@ class Algoritmo(object):
                 self.process.pop(indiceProcessMorePriority)
 
             else:
+                print(arrivalTime, " - Sem processo dispovível para execução no momento")
                 arrivalTime = arrivalTime+1
 
         print(arrivalTime, "- Fim da execução dos processos")
@@ -44,5 +45,42 @@ class Algoritmo(object):
     def roundRobin(self, process):
         self.process: list[Processo] = []
         self.process = process
-        for i in self.process:
-            print(i.process)
+
+        print("Qual o valor do quantum?")
+        quantum = int(input())
+
+        arrivalTime = 0
+        numProcessos = len(self.process)
+
+        while (numProcessos):
+            numProcessosArrivalTime = numProcessos
+            for i in self.process:
+                if(int(i.arrivalTime) <= arrivalTime):
+                    if(int(i.bursTime) > 0):
+                        print(arrivalTime, " - Processo em Execução: ", i.process)
+
+                        if(numProcessos == 1):
+                            arrivalTime = arrivalTime + int(i.bursTime)
+                            i.bursTime = 0
+                            numProcessos = numProcessos-1
+
+                        else:
+                            if(int(i.bursTime)>= quantum):
+                                arrivalTime = arrivalTime + quantum
+                                i.bursTime = int(i.bursTime) - quantum
+                                if(i.bursTime == 0):
+                                    numProcessos = numProcessos-1
+
+                            else:
+                                arrivalTime = arrivalTime + int(i.bursTime)
+                                i.bursTime = 0
+                                numProcessos = numProcessos-1
+
+                else:
+                    numProcessosArrivalTime = numProcessosArrivalTime-1
+
+            if(numProcessosArrivalTime == 0):
+                print(arrivalTime, " - Sem processo dispovível para execução no momento")
+                arrivalTime = arrivalTime + 1
+
+        print(arrivalTime, "- Fim da execução dos processos")

@@ -11,7 +11,7 @@ while (menu):
     processMenu = True
 
     while(processMenu):
-        print("Índice do processo:")
+        print("Nome do processo:")
         process = input()
         print("Arrival Time:")
         arrivalTime = input()
@@ -32,7 +32,7 @@ while (menu):
 
     print("Escolha o algoritmo desejado:")
     print("1 - Priority Scheduling - Não Preemptivo")
-    print("2 - Round Robin (Preemptivo")
+    print("2 - Round Robin (Preemptivo)")
     decisioAlgorithm = input()
     newAlgorithm = Algoritmo(decisioAlgorithm, processos)
 
