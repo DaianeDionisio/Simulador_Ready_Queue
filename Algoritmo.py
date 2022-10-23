@@ -27,15 +27,15 @@ class Algoritmo(object):
             for i in self.process:
                 if(i.arrivalTime <= time and i.priority < priority and i.bursTime > 0):
                     processMorePriority = i
-                    indiceProcessMorePriority = self.process.index(i)
+                    indexProcessMorePriority = self.process.index(i)
                     priority = i.priority
 
             if(processMorePriority != oldProcessMorePriority):
                 print(time, " - Processo em Execução: ", processMorePriority.process)
-                self.process[indiceProcessMorePriority].lastRun = time
+                self.process[indexProcessMorePriority].lastRun = time
                 time = time + processMorePriority.bursTime
                 oldProcessMorePriority = processMorePriority
-                self.process[indiceProcessMorePriority].bursTime = 0
+                self.process[indexProcessMorePriority].bursTime = 0
                 numProcess = numProcess-1
 
             else:
