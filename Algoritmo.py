@@ -39,7 +39,7 @@ class Algoritmo(object):
                 numProcess = numProcess-1
 
             else:
-                print(time, " - Sem processo dispovível para execução no momento")
+                print(time, " - Sem processo disponível para execução no momento")
                 time = time+1
 
         print(time, "- Fim da execução dos processos")
