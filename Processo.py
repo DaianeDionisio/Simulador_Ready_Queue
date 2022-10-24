@@ -1,6 +1,6 @@
 class Processo(object):
     def __init__(self, process, arrivalTime, burstTime, priority):
-        self.process = process
+        self.process = process #nome
         self.arrivalTime = int(arrivalTime)
         self.bursTime = int(burstTime)
         self.priority = int(priority)

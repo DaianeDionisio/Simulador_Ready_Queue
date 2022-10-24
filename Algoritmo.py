@@ -2,14 +2,14 @@ from Processo import Processo
 
 class Algoritmo(object):
 
-    def __init__(self, decisioAlgorithm, process):
-        self.decisioAlgorithm = decisioAlgorithm
+    def __init__(self, decisionAlgorithm, process):
+        self.decisionAlgorithm = decisionAlgorithm
         self.process: list[Processo] = []
         self.process = process
 
-        if(self.decisioAlgorithm == "1"):
+        if(self.decisionAlgorithm == "1"):
             self.priorityScheduling(self.process)
-        elif(decisioAlgorithm == "2"):
+        elif(decisionAlgorithm == "2"):
             self.roundRobin(self.process)
 
     def priorityScheduling(self, process):
