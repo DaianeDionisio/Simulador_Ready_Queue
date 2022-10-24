@@ -19,7 +19,9 @@ class Algoritmo(object):
         time = 0
         processMorePriority = Processo
         oldProcessMorePriority = Processo
+        indexProcessMorePriority = 0
         numProcess = len(self.process)
+
 
         while(numProcess):
             priority = 1000
